@@ -10,6 +10,8 @@ export default function Regions({ ctx, t, includeNonGeo }: { ctx: Ctx; t: Tokens
   const [picked, setPicked] = useState<number | null>(null)
   const prevMap = new Map(prev?.regions.map((r) => [r.id, r.share]) ?? [])
   const chIdx = (name: string) => data.dims.channels.indexOf(name)
+  // 비지역 정의는 데이터 산출 기준(meta.rules)을 따른다 — 실데이터·데모 데이터마다 다름
+  const nonGeoDef = data.meta.rules.find((r) => r.startsWith('비지역 = '))?.slice('비지역 = '.length) ?? '특판 등'
 
   const rows = cur.regions.map((r) => {
     const custs = [...(cur.regionCustomer.get(r.id) ?? new Map()).entries()].sort((a, b) => b[1] - a[1])
@@ -40,7 +42,7 @@ export default function Regions({ ctx, t, includeNonGeo }: { ctx: Ctx; t: Tokens
     <div className="space-y-4">
       {!includeNonGeo && (
         <p className="rounded-lg border border-line bg-wash px-3 py-2 text-[13px] text-ink2">
-          비지역(특판·로얄RIM·해외)·온라인 <b>제외 중</b>: 전체 순매출의 <b className="tabular">{pct(cur.excludedShare)}</b>가 지역 지표에서 빠졌습니다. 해당 거래처는 ‘거래처 의존도’ 화면에는 그대로 포함됩니다.
+          비지역({nonGeoDef})·온라인 <b>제외 중</b>: 전체 순매출의 <b className="tabular">{pct(cur.excludedShare)}</b>가 지역 지표에서 빠졌습니다. 해당 거래처는 ‘거래처 의존도’ 화면에는 그대로 포함됩니다.
         </p>
       )}
       <div className="grid gap-4 lg:grid-cols-5">

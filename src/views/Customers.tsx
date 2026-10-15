@@ -69,7 +69,7 @@ export default function Customers({ ctx, t }: { ctx: Ctx; t: Tokens }) {
         <Card title="누적 비중 곡선" note={`상위 ${reach(50)}곳이 매출의 50%, ${reach(80)}곳이 80%를 차지`} className="lg:col-span-2">
           <div className="h-[380px]">
             <ResponsiveContainer>
-              <LineChart data={pareto} margin={{ top: 8, right: 16, left: 0, bottom: 0 }}>
+              <LineChart data={pareto} margin={{ top: 8, right: 16, left: 0, bottom: 14 }}>
                 <CartesianGrid stroke={t.grid} vertical={false} />
                 <XAxis dataKey="rank" {...axis} type="number" domain={[1, 'dataMax']} label={{ value: '거래처 순위', position: 'insideBottomRight', offset: -2, fill: t.muted, fontSize: 11 }} />
                 <YAxis {...axis} axisLine={false} unit="%" width={44} domain={[0, 100]} />

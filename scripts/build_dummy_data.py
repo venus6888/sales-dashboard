@@ -67,7 +67,7 @@ def main(out: Path, seed: int) -> None:
         {"code": "D9002", "name": "종합몰(데모)", "group": "B2C(매장/온라인)", "region": "온라인", "base": 4.5e7, "div": "종합몰"},
     ]
     # 집중 패턴: 부산·울산·경남 대형 건설사 — 2분기부터 납품 급증
-    star = {"code": "D9100", "name": "(주)한빛해양건설", "group": "건설사", "region": "부산·울산·경남", "base": 2.0e8}
+    star = {"code": "D9100", "name": "(주)동해마린건설", "group": "건설사", "region": "부산·울산·경남", "base": 2.0e8}
     customers.append(star)
     # 2위권 건설사 (비지역 특판)
     customers.append({"code": "D9101", "name": "(주)다온종합건설", "group": "건설사", "region": "비지역", "base": 2.2e8})
