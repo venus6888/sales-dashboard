@@ -46,9 +46,19 @@ export interface Period {
   partial: boolean
 }
 
-export type PeriodMode = 'Q' | 'M'
+export type PeriodMode = 'Q' | 'M' | 'A'
 
 export function buildPeriods(months: number[], mode: PeriodMode): Period[] {
+  if (mode === 'A') {
+    // 전체 기간 — 비교 대상 기간이 없으므로 증감·변동은 표시되지 않는다
+    const first = months[0]
+    const last = months[months.length - 1]
+    const y = (m: number) => Math.floor(m / 100)
+    const label = y(first) === y(last)
+      ? `${y(first)}년 ${first % 100}~${last % 100}월 전체`
+      : `${y(first)}년 ${first % 100}월 ~ ${y(last)}년 ${last % 100}월 전체`
+    return [{ key: 'ALL', label, months: months.map((_, i) => i), partial: false }]
+  }
   if (mode === 'M') {
     return months.map((m, i) => ({ key: String(m), label: `${Math.floor(m / 100)}년 ${m % 100}월`, months: [i], partial: false }))
   }

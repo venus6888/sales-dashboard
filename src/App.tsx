@@ -121,7 +121,7 @@ function Dashboard({ data, onLogout }: { data: Summary; onLogout?: () => void })
 
       <div className="sticky top-0 z-10 -mx-4 mt-4 border-b border-line bg-page/95 px-4 py-3 backdrop-blur sm:-mx-6 sm:px-6">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2">
-          <Segmented label="기간 단위" value={mode} onChange={(v) => { setMode(v); setPeriodKey('') }} options={[{ value: 'Q', label: '분기' }, { value: 'M', label: '월' }]} />
+          <Segmented label="기간 단위" value={mode} onChange={(v) => { setMode(v); setPeriodKey('') }} options={[{ value: 'Q', label: '분기' }, { value: 'M', label: '월' }, { value: 'A', label: '전체' }]} />
           <Select label="기간" value={period.key} onChange={setPeriodKey} options={periods.map((p) => ({ value: p.key, label: p.label }))} />
           <Segmented label="채널" value={filters.channel} onChange={(v) => setFilters((f) => ({ ...f, channel: v }))} options={opts(data.dims.channels.filter((c) => c !== '미지정'))} />
           <Select label="사업부" value={filters.division} onChange={set('division')} options={opts(data.dims.divisions)} />
