@@ -1,0 +1,85 @@
+@import 'tailwindcss';
+
+/* 기본 테마(중립 회색 + 단일 강조색). 브랜드 가이드 확보 후 이 블록만 교체 */
+:root {
+  color-scheme: light;
+  --page: #f9f9f7;
+  --surface: #fcfcfb;
+  --text: #0b0b0b;
+  --text2: #52514e;
+  --muted: #898781;
+  --grid: #e1e0d9;
+  --axis: #c3c2b7;
+  --border: rgba(11, 11, 11, 0.1);
+  --wash: rgba(11, 11, 11, 0.04);
+  --series1: #2a78d6;
+  --series2: #eb6834;
+  --compare: #c3c2b7;
+  --warning: #fab219;
+  --critical: #d03b3b;
+  --warning-text: #8a5a00;
+  --critical-text: #b42c2c;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    color-scheme: dark;
+    --page: #0d0d0d;
+    --surface: #1a1a19;
+    --text: #f0efec;
+    --text2: #c3c2b7;
+    --muted: #898781;
+    --grid: #2c2c2a;
+    --axis: #383835;
+    --border: rgba(255, 255, 255, 0.1);
+    --wash: rgba(255, 255, 255, 0.05);
+    --series1: #3987e5;
+    --series2: #d95926;
+    --compare: #52514e;
+    --warning-text: #fab219;
+    --critical-text: #e66767;
+  }
+}
+:root[data-theme='dark'] {
+  color-scheme: dark;
+  --page: #0d0d0d;
+  --surface: #1a1a19;
+  --text: #f0efec;
+  --text2: #c3c2b7;
+  --muted: #898781;
+  --grid: #2c2c2a;
+  --axis: #383835;
+  --border: rgba(255, 255, 255, 0.1);
+  --wash: rgba(255, 255, 255, 0.05);
+  --series1: #3987e5;
+  --series2: #d95926;
+  --compare: #52514e;
+  --warning-text: #fab219;
+  --critical-text: #e66767;
+}
+
+@theme inline {
+  --color-page: var(--page);
+  --color-surface: var(--surface);
+  --color-ink: var(--text);
+  --color-ink2: var(--text2);
+  --color-muted: var(--muted);
+  --color-line: var(--border);
+  --color-wash: var(--wash);
+  --color-accent: var(--series1);
+  --color-warn: var(--warning-text);
+  --color-crit: var(--critical-text);
+  --font-sans: 'Pretendard', system-ui, -apple-system, 'Segoe UI', 'Malgun Gothic', sans-serif;
+}
+
+body {
+  background: var(--page);
+  color: var(--text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+.tabular {
+  font-variant-numeric: tabular-nums;
+}
+.recharts-cartesian-axis-tick-value {
+  font-variant-numeric: tabular-nums;
+}

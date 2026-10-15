@@ -1,0 +1,35 @@
+# Dependencies / build
+node_modules/
+dist/
+*.tsbuildinfo
+
+# 원본 ERP 데이터 — 개인정보 포함, 절대 커밋 금지 (집계 JSON만 커밋)
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+# 평문 집계 JSON — 암호화본(public/data/*.enc.json)만 커밋
+/data/
+# 실데이터 암호화본 — 공개 저장소에는 올리지 않는다 (데모는 public-demo/data/sales-summary.demo.json)
+public/data/*.enc.json
+
+# Secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa
+credentials.json
+serviceAccount*.json
+
+# Logs / temp
+*.log
+npm-debug.log*
+*.tmp
+.DS_Store
+__pycache__/
+*.pyc
+.venv/
